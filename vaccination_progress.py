@@ -17,16 +17,16 @@ vaccine_count = country_vaccine['vaccines'].value_counts()
 #print(vaccine_count)
 print(vaccine_count.idxmax())
 
-
-
-
-
-
-'''
-
 print("\n--- United States --- ")
 us_data = data.loc[data['country'] == "United States"]
-print("\nUnited States Data Info: ", us_data.shape)
+print("United States Data Info: ", us_data.shape)
+print("Vaccines used: ", us_data['vaccines'].unique())
 
-print("\nVaccines used: ", us_data['vaccines'].unique())
-'''
+print("Line Chart: People Fully Vaccinated over time")
+plt.figure(figsize=(10, 6))
+plt.plot(us_data['date'], us_data['people_fully_vaccinated_per_hundred'], marker = 'o')
+plt.xlabel("Date")
+plt.ylabel('Number of people fully vaccinated per hundred\n (Ratio in percent between population fully immunized \nand total population up to the date in the country')
+plt.title('People Fully Vaccinated over time')
+plt.xticks(rotation=90)
+plt.show()
